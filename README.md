@@ -1,16 +1,42 @@
-# todo_list
 
-App that allows users to create a to-do list.
+# Todo List Flutter App <img src="https://cdn-images-1.medium.com/max/1200/1*5-aoK8IBmXve5whBQM90GA.png" width="40">
+A simple Flutter app that allows users to create a to-do list.
 
-## Getting Started
+## Features
+ • Display a list of tasks.
 
-This project is a starting point for a Flutter application.
+• Allow users to add new tasks to the list.
 
-A few resources to get you started if this is your first Flutter project:
+• Allow users to mark tasks as completed.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+• Provide an option to delete tasks from the list. Implement the necessary code to achieve this functionality.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+• Store all data locally
+
+## Screens
+![image](https://github.com/EhudMarchi/Todo-List-Flutter-App/assets/49651991/4008e8d2-16be-412a-ac69-e300998ddb0e)
+![image](https://github.com/EhudMarchi/Todo-List-Flutter-App/assets/49651991/372625fb-d90f-4e62-ba3e-743f4ef9e2a9)
+![image](https://github.com/EhudMarchi/Todo-List-Flutter-App/assets/49651991/c30f5bcb-25e0-46ea-90db-37672046530f)
+
+
+
+
+### Getting Started
+
+To run the application locally, you'll need to have Flutter and Dart installed. Make sure you have the Flutter SDK set up properly by following the [official installation guide](https://flutter.dev/docs/get-started/install).
+
+### Clone the repository:
+
+```bash
+git clone https://github.com/EhudMarchi/restaurant-flutter-app.git
+cd flutter-restaurant-app
+```
+#### Install dependencies:
+```bash
+flutter pub get
+```
+#### Run the app:
+```bash
+flutter run
+```
+If you prefer using an emulator/simulator, make sure it's running before executing the flutter run command.
