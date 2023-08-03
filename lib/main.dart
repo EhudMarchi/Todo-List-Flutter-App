@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:todo_list/taskListScreen.dart';
 import 'package:todo_list/taskProvider.dart';
 
+import 'constants.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -10,9 +12,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => TaskProvider()..loadTasks(),
-      child: MaterialApp(
+      child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'To-Do List App',
+        title: kTitle,
         home: TaskListScreen(),
       ),
     );

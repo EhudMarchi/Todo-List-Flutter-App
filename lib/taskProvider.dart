@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo_list/task.dart';
 
+import 'constants.dart';
+
 class TaskProvider with ChangeNotifier {
   List<Task> _tasks = [];
 
@@ -34,12 +36,12 @@ class TaskProvider with ChangeNotifier {
   Future<void> _saveTasks() async {
     final prefs = await SharedPreferences.getInstance();
     final encodedTasks = _tasks.map((task) => task.toJson()).toList();
-    await prefs.setString('tasks', json.encode(encodedTasks));
+    await prefs.setString(kTasksKey, json.encode(encodedTasks));
   }
 
   Future<void> loadTasks() async {
     final prefs = await SharedPreferences.getInstance();
-    final storedTasks = prefs.getString('tasks');
+    final storedTasks = prefs.getString(kTasksKey);
     if (storedTasks != null) {
       final decodedTasks = json.decode(storedTasks) as List<dynamic>;
       _tasks = decodedTasks.map((task) => Task.fromJson(task)).toList();

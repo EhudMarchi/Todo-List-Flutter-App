@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_list/taskProvider.dart';
 
+import 'constants.dart';
+
 class TaskListScreen extends StatelessWidget {
   const TaskListScreen({super.key});
   @override
@@ -12,12 +14,15 @@ class TaskListScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.cyan,
       appBar: AppBar(
-          title: const Text('To-Do List', style: TextStyle(color: Colors.cyan),),
-          backgroundColor: Colors.white,
-          centerTitle: true,
+        title: const Text(
+          kTitle,
+          style: TextStyle(color: Colors.cyan),
+        ),
+        backgroundColor: Colors.white,
+        centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top:5, bottom: 5),
+        padding: const EdgeInsets.only(top: 5, bottom: 5),
         child: ListView.builder(
           itemCount: tasks.length,
           itemBuilder: (context, index) => Padding(
@@ -27,22 +32,34 @@ class TaskListScreen extends StatelessWidget {
                 tasks[index].title,
                 style: TextStyle(
                   fontSize: 18,
-                  decoration: tasks[index].isCompleted?TextDecoration.lineThrough:TextDecoration.none,
+                  decoration: tasks[index].isCompleted
+                      ? TextDecoration.lineThrough
+                      : TextDecoration.none,
                   fontWeight: FontWeight.bold,
-                  color: tasks[index].isCompleted?Colors.grey : Colors.cyan, // Choose your desired text color
+                  color: tasks[index].isCompleted
+                      ? Colors.grey
+                      : Colors.cyan, // Choose your desired text color
                 ),
               ),
               trailing: Checkbox(
                 value: tasks[index].isCompleted,
-                onChanged: (_) => tasksProvider.toggleTaskStatus(tasks[index].id),
+                onChanged: (_) =>
+                    tasksProvider.toggleTaskStatus(tasks[index].id),
                 activeColor: Colors.green,
               ),
-              onLongPress: () => _showDeleteConfirmationDialog(context, tasksProvider, tasks[index].id),
-              tileColor: tasks[index].isCompleted ? Colors.grey[300] : Colors.white, // Add some background color to distinguish completed tasks
+              onLongPress: () => _showDeleteConfirmationDialog(
+                  context, tasksProvider, tasks[index].id),
+              tileColor: tasks[index].isCompleted
+                  ? Colors.grey[300]
+                  : Colors
+                      .white, // Add some background color to distinguish completed tasks
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(25),
               ), // Rounded corners for the tile
-              contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16), // Adjust padding for better spacing// Show an icon ind
+              contentPadding: const EdgeInsets.symmetric(
+                  vertical: 8,
+                  horizontal:
+                      16), // Adjust padding for better spacing// Show an icon ind
             ),
           ),
         ),
@@ -61,27 +78,25 @@ class TaskListScreen extends StatelessWidget {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Add New Task',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-            color: Colors.black,
-          ),),
+        title: const Text(
+          kAddNewTask,
+          style: kBoldTextStyle,
+        ),
         content: TextField(
           onChanged: (value) => newTaskTitle = value,
-          decoration: InputDecoration(hintText: 'Enter task title'),
+          decoration: const InputDecoration(hintText: kEnterTaskTitle),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('Cancel'),
+            child: const Text(kCancel),
           ),
           TextButton(
             onPressed: () {
               tasksProvider.addTask(newTaskTitle);
               Navigator.pop(context);
             },
-            child: Text('Add'),
+            child: const Text(kAdd),
           ),
         ],
       ),
@@ -93,16 +108,12 @@ class TaskListScreen extends StatelessWidget {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text(
-          'Delete Task',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-            color: Colors.black,
-          ),
+        title: const Text(
+          kDeleteTask,
+          style: kBoldTextStyle,
         ),
         content: Text(
-          'Are you sure you want to delete this task?',
+          kVerifyDelete,
           style: TextStyle(
             fontSize: 16,
             color: Colors.grey[800],
@@ -111,14 +122,14 @@ class TaskListScreen extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('Cancel'),
+            child: const Text(kCancel),
           ),
           TextButton(
             onPressed: () {
               tasksProvider.deleteTask(taskId);
               Navigator.pop(context);
             },
-            child: Text('Delete'),
+            child: const Text(kDelete),
           ),
         ],
       ),
