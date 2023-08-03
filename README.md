@@ -9,7 +9,7 @@ A simple Flutter app that allows users to create a to-do list.
 
 • Allow users to mark tasks as completed.
 
-• Provide an option to delete tasks from the list. Implement the necessary code to achieve this functionality.
+• Provide an option to delete tasks from the list.
 
 • Store all data locally
 
